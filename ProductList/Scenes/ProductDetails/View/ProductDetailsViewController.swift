@@ -71,6 +71,5 @@ private extension ProductDetailsViewController {
     @IBAction func favPressed(_ sender: Any) {
         viewModel.save(productId: viewModel.productID ?? "")
         favoriteButton.setTitle(viewModel.getFavoriteButtonTitle(), for: .normal)
-
     }
 }

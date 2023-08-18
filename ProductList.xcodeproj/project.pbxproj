@@ -41,6 +41,7 @@
 		06D582D42A1E143E00935D52 /* UIView+Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D582D32A1E143E00935D52 /* UIView+Identifier.swift */; };
 		41D8998E2A8EDEB300291E5F /* ProductDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D8998D2A8EDEB300291E5F /* ProductDetailsView.swift */; };
 		41D899902A8EF42E00291E5F /* CosmosRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D8998F2A8EF42E00291E5F /* CosmosRateView.swift */; };
+		41D899922A8F90FB00291E5F /* ProductDetailsView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D899912A8F90FB00291E5F /* ProductDetailsView+ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		06D582D32A1E143E00935D52 /* UIView+Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Identifier.swift"; sourceTree = "<group>"; };
 		41D8998D2A8EDEB300291E5F /* ProductDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsView.swift; sourceTree = "<group>"; };
 		41D8998F2A8EF42E00291E5F /* CosmosRateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosRateView.swift; sourceTree = "<group>"; };
+		41D899912A8F90FB00291E5F /* ProductDetailsView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductDetailsView+ViewModel.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				06BAD0F72A1E2325006A0BDF /* ProductDetailsViewModel.swift */,
+				41D899912A8F90FB00291E5F /* ProductDetailsView+ViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -455,6 +458,7 @@
 				06D582D22A1E141200935D52 /* UIView+Borders.swift in Sources */,
 				06BAD0F62A1E1FF0006A0BDF /* ProductDetailsViewController.swift in Sources */,
 				06D582BD2A1E067200935D52 /* ProductListViewModel.swift in Sources */,
+				41D899922A8F90FB00291E5F /* ProductDetailsView+ViewModel.swift in Sources */,
 				06D582CC2A1E0F3200935D52 /* ProductTableViewCell.swift in Sources */,
 				06D582722A1DFC5100935D52 /* SceneDelegate.swift in Sources */,
 				06D582B32A1E046800935D52 /* Products.swift in Sources */,

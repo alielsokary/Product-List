@@ -28,7 +28,7 @@ class MainCoordinator: NSObject, Coordinator {
 		navigationController.pushViewController(viewController, animated: false)
     }
 
-    func navigateToNewScreen(with data: ProductViewModel) {
+    @MainActor func navigateToNewScreen(with data: ProductViewModel) {
         let newcordinator = DetailsCoordinator(navigationController: navigationController, productViewModel: data)
 
         childCoordinators.append(newcordinator)

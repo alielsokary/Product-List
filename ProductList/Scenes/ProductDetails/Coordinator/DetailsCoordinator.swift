@@ -17,14 +17,14 @@ class DetailsCoordinator: Coordinator {
         self.productViewModel = productViewModel
     }
 
-    func start() {
-        let viewmodel = ProductDetailsViewModel()
+    @MainActor func start() {
+        let viewmodel = ProductDetailsView.ViewModel()
         viewmodel.productInfo = productViewModel
 		let storyboard = Storyboard.Main.instance
-		let viewcontroller = storyboard.instantiateViewController(identifier: ProductDetailsViewController.storyboardID) { coder in
-			return ProductDetailsViewController(coder: coder, coordinator: self, viewModel: viewmodel)
-		}
-        let newView = UIHostingController(rootView: ProductDetailsView())
+//		let viewcontroller = storyboard.instantiateViewController(identifier: ProductDetailsViewController.storyboardID) { coder in
+//			return ProductDetailsViewController(coder: coder, coordinator: self, viewModel: viewmodel)
+//		}
+        let newView = UIHostingController(rootView: ProductDetailsView(viewModel: viewmodel))
         navigationController.pushViewController(newView, animated: true)
     }
 }
