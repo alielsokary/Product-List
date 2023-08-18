@@ -39,6 +39,7 @@
 		06D582D02A1E120900935D52 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 06D582CF2A1E120900935D52 /* Cosmos */; };
 		06D582D22A1E141200935D52 /* UIView+Borders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D582D12A1E141200935D52 /* UIView+Borders.swift */; };
 		06D582D42A1E143E00935D52 /* UIView+Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D582D32A1E143E00935D52 /* UIView+Identifier.swift */; };
+		41D8998E2A8EDEB300291E5F /* ProductDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D8998D2A8EDEB300291E5F /* ProductDetailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		06D582CB2A1E0F3200935D52 /* ProductTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductTableViewCell.xib; sourceTree = "<group>"; };
 		06D582D12A1E141200935D52 /* UIView+Borders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Borders.swift"; sourceTree = "<group>"; };
 		06D582D32A1E143E00935D52 /* UIView+Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Identifier.swift"; sourceTree = "<group>"; };
+		41D8998D2A8EDEB300291E5F /* ProductDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				06BAD0F52A1E1FF0006A0BDF /* ProductDetailsViewController.swift */,
+				41D8998D2A8EDEB300291E5F /* ProductDetailsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 				06A27C462A1E328800E37849 /* FavoriteManager.swift in Sources */,
 				06D582BA2A1E05D300935D52 /* ProductService.swift in Sources */,
 				06D582AE2A1E01CC00935D52 /* ProductsRouter.swift in Sources */,
+				41D8998E2A8EDEB300291E5F /* ProductDetailsView.swift in Sources */,
 				06D582C72A1E0D0700935D52 /* MainCoordinator.swift in Sources */,
 				06D582AC2A1E018B00935D52 /* NetworkService.swift in Sources */,
 			);

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class DetailsCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
@@ -23,6 +24,7 @@ class DetailsCoordinator: Coordinator {
 		let viewcontroller = storyboard.instantiateViewController(identifier: ProductDetailsViewController.storyboardID) { coder in
 			return ProductDetailsViewController(coder: coder, coordinator: self, viewModel: viewmodel)
 		}
-        navigationController.pushViewController(viewcontroller, animated: true)
+        let newView = UIHostingController(rootView: ProductDetailsView())
+        navigationController.pushViewController(newView, animated: true)
     }
 }
