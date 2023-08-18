@@ -9,7 +9,9 @@ import SwiftUI
 import Kingfisher
 
 struct ProductDetailsView: View {
+
     @StateObject var viewModel = ViewModel()
+
     var body: some View {
         ScrollView {
             NavigationView {
@@ -20,21 +22,21 @@ struct ProductDetailsView: View {
                             .frame(width: 60, height: 60)
                         
                         VStack(alignment: .leading) {
-                            Text(viewModel.productName ?? "")
+                            Text(viewModel.productName.unwrapped)
                                 .font(.body)
-                            Text(viewModel.productPrice ?? "")
+                            Text(viewModel.productPrice.unwrapped)
                                 .font(.caption)
                             HStack {
-                                CosmosRateView(rating: $viewModel.productRate)
-                                Text(viewModel.productDate ?? "")
+                                CosmosRateView(rating: viewModel.productRate)
+                                Text(viewModel.productDate .unwrapped)
                                     .foregroundColor(.gray)
                                     .font(.caption)
                             }
                         }
                     }
-                    Text(viewModel.productDescription ?? "")
+                    Text(viewModel.productDescription.unwrapped)
                     Button {
-                        viewModel.save(productId: viewModel.productID ?? "")
+                        viewModel.save(productId: viewModel.productID.unwrapped)
                         viewModel.updateFavoriteButtonTitle()
                     } label: {
                         Text(viewModel.getFavoriteButtonTitle())
@@ -42,7 +44,7 @@ struct ProductDetailsView: View {
                             .font(.headline)
                     }.buttonStyle(.borderedProminent).tint(Color("MainColor"))
                     
-                    Text(viewModel.productLongDescription ?? "")
+                    Text(viewModel.productLongDescription.unwrapped)
                     Button {
                         
                     } label: {
@@ -54,7 +56,7 @@ struct ProductDetailsView: View {
                 .padding(.leading, 16)
                 .padding(.trailing, 16)
             }
-            .navigationTitle(viewModel.productName ?? "")
+            .navigationTitle(viewModel.productName.unwrapped)
         }
     }
 }

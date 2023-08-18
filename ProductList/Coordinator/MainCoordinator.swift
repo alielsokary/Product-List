@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class MainCoordinator: NSObject, Coordinator {
 
@@ -16,16 +17,20 @@ class MainCoordinator: NSObject, Coordinator {
         self.navigationController = navigationController
     }
 
-    func start() {
+    @MainActor func start() {
         navigationController.delegate = self
         let service: ProductService = ProductServiceImpl()
-		let viewModel: ProductListViewModelLogic = ProductListViewModel(apiService: service)
+        let viewmodel = ProductListView.VM(apiService: service)
+//		let viewModel: ProductListViewModelLogic = ProductListViewModel(apiService: service)
 		let storyboard = Storyboard.Main.instance
-		let viewController = storyboard.instantiateViewController(identifier: ProductListViewController.storyboardID) { coder in
-			return ProductListViewController(coder: coder, coordinator: self, viewModel: viewModel)
-		}
+//		let viewController = storyboard.instantiateViewController(identifier: ProductListViewController.storyboardID) { coder in
+//			return ProductListViewController(coder: coder, coordinator: self, viewModel: viewModel)
+//		}
 
-		navigationController.pushViewController(viewController, animated: false)
+        let newView = UIHostingController(rootView: ProductListView(viewModel: viewmodel))
+        newView.rootView.coordinator = self
+        navigationController.pushViewController(newView, animated: true)
+//		navigationController.pushViewController(viewController, animated: false)
     }
 
     @MainActor func navigateToNewScreen(with data: ProductViewModel) {

@@ -9,7 +9,7 @@ import SwiftUI
 import Cosmos
 
 struct CosmosRateView: UIViewRepresentable {
-    @Binding var rating: Double
+    var rating: Double
     
     func makeUIView(context: Context) -> CosmosView {
         CosmosView()
@@ -21,7 +21,7 @@ struct CosmosRateView: UIViewRepresentable {
         uiView.setContentHuggingPriority(.defaultHigh, for: .vertical)
         uiView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         
-        uiView.settings.starSize = 25
+        uiView.settings.starSize = 15
         uiView.settings.fillMode = .precise
         uiView.settings.updateOnTouch = false
     }

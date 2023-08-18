@@ -20,7 +20,7 @@ struct Header: Codable {
 }
 
 // MARK: - Product
-struct Product: Codable {
+struct Product: Identifiable, Codable {
     let name: String
     let type: String
     let id: Int

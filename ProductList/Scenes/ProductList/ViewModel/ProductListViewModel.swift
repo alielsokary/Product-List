@@ -77,7 +77,7 @@ class ProductListViewModel: ProductListViewModelLogic {
     }
 
     // MARK: - process fetched result
-    func getCurrentProduct( at indexPath: IndexPath ) -> ProductViewModel {
+    func getCurrentProduct(at indexPath: IndexPath) -> ProductViewModel {
         return productList[indexPath.row]
     }
 

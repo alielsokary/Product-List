@@ -16,6 +16,7 @@ class ProductTableViewCell: UITableViewCell {
     @IBOutlet weak var productdescription: UILabel!
     @IBOutlet weak var productPrice: UILabel!
     @IBOutlet weak var rateView: CosmosView!
+
     var data: ProductViewModel? {
         didSet {
             productName.text = data?.name

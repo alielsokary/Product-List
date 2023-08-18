@@ -45,6 +45,7 @@
 		41D899942A8FC86200291E5F /* ProductListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D899932A8FC86200291E5F /* ProductListView.swift */; };
 		41D899962A8FD80A00291E5F /* ProductListView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D899952A8FD80A00291E5F /* ProductListView+ViewModel.swift */; };
 		41D899982A8FDCD500291E5F /* Optional+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D899972A8FDCD500291E5F /* Optional+Extension.swift */; };
+		41D8999A2A8FF11800291E5F /* ProductItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D899992A8FF11800291E5F /* ProductItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		41D899932A8FC86200291E5F /* ProductListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListView.swift; sourceTree = "<group>"; };
 		41D899952A8FD80A00291E5F /* ProductListView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductListView+ViewModel.swift"; sourceTree = "<group>"; };
 		41D899972A8FDCD500291E5F /* Optional+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extension.swift"; sourceTree = "<group>"; };
+		41D899992A8FF11800291E5F /* ProductItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -270,6 +272,7 @@
 			children = (
 				06D582BC2A1E067200935D52 /* ProductListViewModel.swift */,
 				06D582BE2A1E079700935D52 /* ProductViewModel.swift */,
+				41D899952A8FD80A00291E5F /* ProductListView+ViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -279,6 +282,8 @@
 			children = (
 				06D582BB2A1E064000935D52 /* Cells */,
 				06D582732A1DFC5100935D52 /* ProductListViewController.swift */,
+				41D899932A8FC86200291E5F /* ProductListView.swift */,
+				41D899992A8FF11800291E5F /* ProductItemView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -450,10 +455,12 @@
 				06D582C82A1E0D0700935D52 /* Coordinator.swift in Sources */,
 				06D582D42A1E143E00935D52 /* UIView+Identifier.swift in Sources */,
 				065782902A1E19C8005AB37B /* Double+Extension.swift in Sources */,
+				41D899962A8FD80A00291E5F /* ProductListView+ViewModel.swift in Sources */,
 				06D582742A1DFC5100935D52 /* ProductListViewController.swift in Sources */,
 				06D582A62A1DFFCF00935D52 /* Config.swift in Sources */,
 				06D582702A1DFC5100935D52 /* AppDelegate.swift in Sources */,
 				06D582AA2A1E015C00935D52 /* NetworkError.swift in Sources */,
+				41D8999A2A8FF11800291E5F /* ProductItemView.swift in Sources */,
 				06D582A82A1E00F500935D52 /* HTTPMethod.swift in Sources */,
 				06D582BF2A1E079700935D52 /* ProductViewModel.swift in Sources */,
 				41D899902A8EF42E00291E5F /* CosmosRateView.swift in Sources */,

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ProductViewModel {
+struct ProductViewModel: Identifiable, Hashable {
     let id: Int
     let name: String
     let imageUrl: String
