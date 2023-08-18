@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Cosmos
 
 struct ProductDetailsView: View {
     @SwiftUI.State var rating = 3.0
@@ -22,7 +21,7 @@ struct ProductDetailsView: View {
                         Text("Title")
                         Text("Subtitle")
                         HStack {
-                            MyCosmosView(rating: $rating)
+                            CosmosRateView(rating: $rating)
                             Text("Label")
                                 .foregroundColor(.gray)
                                 .font(.caption)
@@ -49,27 +48,6 @@ struct ProductDetailsView: View {
             }.padding(.leading, 16)
                 .padding(.trailing, 16)
         }
-    }
-}
-
-struct MyCosmosView: UIViewRepresentable {
-    @Binding var rating: Double
-    
-    func makeUIView(context: Context) -> CosmosView {
-        CosmosView()
-    }
-    
-    func updateUIView(_ uiView: CosmosView, context: Context) {
-        uiView.rating = rating
-        
-        // Autoresize Cosmos view according to it intrinsic size
-        uiView.setContentHuggingPriority(.defaultHigh, for: .vertical)
-        uiView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        
-        // Change Cosmos view settings here
-        uiView.settings.starSize = 25
-        uiView.settings.fillMode = .precise
-        uiView.settings.updateOnTouch = false
     }
 }
 

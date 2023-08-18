@@ -40,6 +40,7 @@
 		06D582D22A1E141200935D52 /* UIView+Borders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D582D12A1E141200935D52 /* UIView+Borders.swift */; };
 		06D582D42A1E143E00935D52 /* UIView+Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D582D32A1E143E00935D52 /* UIView+Identifier.swift */; };
 		41D8998E2A8EDEB300291E5F /* ProductDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D8998D2A8EDEB300291E5F /* ProductDetailsView.swift */; };
+		41D899902A8EF42E00291E5F /* CosmosRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D8998F2A8EF42E00291E5F /* CosmosRateView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		06D582D12A1E141200935D52 /* UIView+Borders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Borders.swift"; sourceTree = "<group>"; };
 		06D582D32A1E143E00935D52 /* UIView+Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Identifier.swift"; sourceTree = "<group>"; };
 		41D8998D2A8EDEB300291E5F /* ProductDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsView.swift; sourceTree = "<group>"; };
+		41D8998F2A8EF42E00291E5F /* CosmosRateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosRateView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 			children = (
 				06BAD0F52A1E1FF0006A0BDF /* ProductDetailsViewController.swift */,
 				41D8998D2A8EDEB300291E5F /* ProductDetailsView.swift */,
+				41D8998F2A8EF42E00291E5F /* CosmosRateView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -443,6 +446,7 @@
 				06D582AA2A1E015C00935D52 /* NetworkError.swift in Sources */,
 				06D582A82A1E00F500935D52 /* HTTPMethod.swift in Sources */,
 				06D582BF2A1E079700935D52 /* ProductViewModel.swift in Sources */,
+				41D899902A8EF42E00291E5F /* CosmosRateView.swift in Sources */,
 				06D582C22A1E0A4100935D52 /* Int+Extension.swift in Sources */,
 				06BAD0F82A1E2325006A0BDF /* ProductDetailsViewModel.swift in Sources */,
 				06D582C92A1E0D0700935D52 /* Storyboarded.swift in Sources */,
