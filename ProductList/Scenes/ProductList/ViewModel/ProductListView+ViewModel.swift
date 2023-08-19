@@ -20,6 +20,7 @@ extension ProductListView {
 
         @Published var listTitle: String?
         @Published var listSubTitle: String?
+        @Published var selectedSegmentIndex: Int = 0
 
         // MARK: - API result
         var products: Products? {
