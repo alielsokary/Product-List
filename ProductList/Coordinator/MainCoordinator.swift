@@ -20,17 +20,11 @@ class MainCoordinator: NSObject, Coordinator {
     @MainActor func start() {
         navigationController.delegate = self
         let service: ProductService = ProductServiceImpl()
-        let viewmodel = ProductListView.VM(apiService: service)
-//		let viewModel: ProductListViewModelLogic = ProductListViewModel(apiService: service)
-		let storyboard = Storyboard.Main.instance
-//		let viewController = storyboard.instantiateViewController(identifier: ProductListViewController.storyboardID) { coder in
-//			return ProductListViewController(coder: coder, coordinator: self, viewModel: viewModel)
-//		}
+        let viewmodel = ProductListView.ProductListViewModel(apiService: service)
 
         let newView = UIHostingController(rootView: ProductListView(viewModel: viewmodel))
         newView.rootView.coordinator = self
         navigationController.pushViewController(newView, animated: true)
-//		navigationController.pushViewController(viewController, animated: false)
     }
 
     @MainActor func navigateToNewScreen(with data: ProductViewModel) {

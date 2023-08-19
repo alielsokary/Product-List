@@ -13,10 +13,3 @@ struct Config {
         static let getProducts = "/products-test.json"
     }
 }
-enum HTTPHeaderField: String {
-    case contentType = "Content-Type"
-}
-
-enum ContentType: String {
-    case json = "application/json"
-}

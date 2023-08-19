@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import Combine
 
 extension ProductListView {
 
-    @MainActor class VM: ObservableObject {
+    @MainActor class ProductListViewModel: ObservableObject {
         
         private let apiService: ProductService
 
@@ -21,6 +22,8 @@ extension ProductListView {
         @Published var listTitle: String?
         @Published var listSubTitle: String?
         @Published var selectedSegmentIndex: Int = 0
+        
+        private var cancelable: Set<AnyCancellable> = []
 
         // MARK: - API result
         var products: Products? {
@@ -43,11 +46,7 @@ extension ProductListView {
         }
 
         // MARK: - callback for interfaces
-        var state: State = .empty {
-            didSet {
-                self.updateLoadingStatus?()
-            }
-        }
+        
         var alertMessage: String? {
             didSet {
                 self.showAlertClosure?()
@@ -85,22 +84,20 @@ extension ProductListView {
         }
         
         func getProducts() {
-            state = .loading
-            apiService.getProducts { [weak self] result in
-                guard let self = self else {
-                    return
-                }
-                switch result {
-                case .success(let data):
-                  self.products = data
-                  self.state = .populated
-                case .failure(let error):
-                    self.state = .error
-                    self.alertMessage = error.errorDescription
-                        return
-                }
+            APIClient.dispatch(
+                APIRouter.GetProducts(queryParams:
+                                        APIParameters.ProductParams(skip: 1, limit: 10)))
 
+            .sink { [weak self] completion in
+                switch completion {
+                case .finished: break
+                case let .failure(error):
+                    self?.alertMessage = error.errorDescription
+                }
             }
+            receiveValue: { [weak self] products in
+                self?.products = products
+            }.store(in: &cancelable)
         }
     }
 }

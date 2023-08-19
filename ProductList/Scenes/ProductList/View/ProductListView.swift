@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProductListView: View {
-    @StateObject var viewModel = VM()
+    @StateObject var viewModel = ProductListViewModel()
     // TODO: Make private
     var coordinator: MainCoordinator?
     var body: some View {
@@ -30,8 +30,8 @@ struct ProductListView: View {
                         )).onChange(of: viewModel.selectedSegmentIndex) { newValue in
                             viewModel.filterProducts(at: newValue)
                         }
-                    
-                    
+
+
                 }
                 List(viewModel.productList) { product in
                     ProductItemView(product: product)
