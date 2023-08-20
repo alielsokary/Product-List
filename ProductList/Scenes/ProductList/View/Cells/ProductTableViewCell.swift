@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Kingfisher
 import Cosmos
 
 class ProductTableViewCell: UITableViewCell {
@@ -25,7 +24,7 @@ class ProductTableViewCell: UITableViewCell {
             rateView.rating = data?.rating.approximateToNearestHalf() ?? 0.0
 
             if let url = URL(string: data?.imageUrl ?? "") {
-                productImage.kf.setImage(with: url)
+//                productImage.kf.setImage(with: url)
             }
             if data?.isAvailable ?? false {
                 productPrice.isHidden = false

@@ -22,7 +22,7 @@ extension ProductListView {
         @Published var listTitle: String?
         @Published var listSubTitle: String?
         @Published var selectedSegmentIndex: Int = 0
-        
+                
         private var cancelable: Set<AnyCancellable> = []
 
         // MARK: - API result

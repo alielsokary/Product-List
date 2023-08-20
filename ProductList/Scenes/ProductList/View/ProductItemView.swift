@@ -6,15 +6,19 @@
 //
 
 import SwiftUI
-import Kingfisher
 import Cosmos
 
 struct ProductItemView: View {
     var product: ProductViewModel
     var body: some View {
         HStack {
-            KFImage(URL(string: product.imageUrl))
-                .resizable()
+            AsyncImage(url: URL(string: product.imageUrl), content: { image in
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+            }, placeholder: {
+                Color.gray.opacity(0.3)
+            })
                 .frame(width: 60, height: 60)
             VStack(alignment: .leading, spacing: 6) {
                 Text(product.name)

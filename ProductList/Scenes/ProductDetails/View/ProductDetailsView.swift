@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Kingfisher
 
 struct ProductDetailsView: View {
 
@@ -17,10 +16,14 @@ struct ProductDetailsView: View {
             NavigationView {
                 VStack(alignment: .leading, spacing: 16) {
                     HStack(spacing: 16) {
-                        KFImage(viewModel.imageUrl)
-                            .resizable()
-                            .frame(width: 60, height: 60)
-                        
+                        AsyncImage(url: viewModel.imageUrl, content: { image in
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                        }, placeholder: {
+                            Color.gray.opacity(0.3)
+                        })
+                        .frame(width: 60, height: 60)
                         VStack(alignment: .leading) {
                             Text(viewModel.productName.unwrapped)
                                 .font(.body)
