@@ -8,14 +8,19 @@
 import SwiftUI
 
 struct ProductListView: View {
-    @StateObject var viewModel = ProductListViewModel()
-    // TODO: Make private
-    var coordinator: MainCoordinator?
+    @ObservedObject private var viewModel: ProductListViewModel
+    private let coordinator: MainCoordinator?
+
+    init(viewModel: ProductListViewModel, coordinator: MainCoordinator?) {
+        self.viewModel = viewModel
+        self.coordinator = coordinator
+    }
+
     var body: some View {
         NavigationView {
             VStack(alignment: .center, spacing: 10) {
                 Spacer()
-                
+
                 HStack(alignment: .top, spacing: 20) {
                     Picker("", selection: $viewModel.selectedSegmentIndex) {
                         Text("All").tag(0)
@@ -30,7 +35,6 @@ struct ProductListView: View {
                         )).onChange(of: viewModel.selectedSegmentIndex) { newValue in
                             viewModel.filterProducts(at: newValue)
                         }
-
 
                 }
                 List(viewModel.productList) { product in
@@ -58,7 +62,7 @@ struct ProductListView: View {
                 }
             }.onAppear {
                 viewModel.getProducts()
-                
+
             }}.navigationTitle(viewModel.listTitle.unwrapped)
             .toolbar {
                 ToolbarItem(placement: .principal) {
@@ -68,11 +72,5 @@ struct ProductListView: View {
                     }
                 }
             }
-    }
-}
-
-struct ProductListView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProductListView()
     }
 }

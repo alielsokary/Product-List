@@ -17,17 +17,16 @@ class MainCoordinator: NSObject, Coordinator {
         self.navigationController = navigationController
     }
 
-    @MainActor func start() {
+    func start() {
         navigationController.delegate = self
         let service: ProductService = ProductServiceImpl()
-        let viewmodel = ProductListView.ProductListViewModel(apiService: service)
+        let viewmodel = ProductListViewModel(apiService: service)
 
-        let newView = UIHostingController(rootView: ProductListView(viewModel: viewmodel))
-        newView.rootView.coordinator = self
+        let newView = UIHostingController(rootView: ProductListView(viewModel: viewmodel, coordinator: self))
         navigationController.pushViewController(newView, animated: true)
     }
 
-    @MainActor func navigateToNewScreen(with data: ProductViewModel) {
+    func navigateToNewScreen(with data: ProductViewModel) {
         let newcordinator = DetailsCoordinator(navigationController: navigationController, productViewModel: data)
 
         childCoordinators.append(newcordinator)

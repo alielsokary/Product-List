@@ -17,8 +17,8 @@ class DetailsCoordinator: Coordinator {
         self.productViewModel = productViewModel
     }
 
-    @MainActor func start() {
-        let viewmodel = ProductDetailsView.ViewModel()
+    func start() {
+        let viewmodel = ProductDetailsViewModel()
         viewmodel.productInfo = productViewModel
         let newView = UIHostingController(rootView: ProductDetailsView(viewModel: viewmodel))
         navigationController.pushViewController(newView, animated: true)

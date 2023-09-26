@@ -9,7 +9,11 @@ import SwiftUI
 
 struct ProductDetailsView: View {
 
-    @StateObject var viewModel = ViewModel()
+    @ObservedObject var viewModel: ProductDetailsViewModel
+
+    init(viewModel: ProductDetailsViewModel) {
+        self.viewModel = viewModel
+    }
 
     var body: some View {
         ScrollView {
@@ -46,10 +50,10 @@ struct ProductDetailsView: View {
                             .frame(maxWidth: .infinity, minHeight: 44)
                             .font(.headline)
                     }.buttonStyle(.borderedProminent).tint(Color("MainColor"))
-                    
+
                     Text(viewModel.productLongDescription.unwrapped)
                     Button {
-                        
+
                     } label: {
                         Text("© 2016 Check24")
                             .font(.headline)
@@ -61,11 +65,5 @@ struct ProductDetailsView: View {
             }
             .navigationTitle(viewModel.productName.unwrapped)
         }
-    }
-}
-
-struct ProductDetailsView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProductDetailsView()
     }
 }

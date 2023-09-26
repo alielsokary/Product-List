@@ -8,12 +8,12 @@
 import Foundation
 
 struct APIRouter {
-    
-    struct GetProducts: Request {
+
+    struct GetProducts: EndpointRouter {
         typealias ReturnType = Products
         var path: String = "/products-test.json"
         var method: HTTPMethod = .get
-        var queryParams: [String : Any]?
+        var queryParams: [String: Any]?
         init(queryParams: APIParameters.ProductParams) {
             self.queryParams = queryParams.asDictionary
         }

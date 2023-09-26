@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 // Our Request Protocol
-protocol Request {
+protocol EndpointRouter {
     var path: String { get }
     var method: HTTPMethod { get }
     var contentType: String { get }
@@ -20,15 +20,15 @@ protocol Request {
 }
 
 // Defaults and Helper Methods
-extension Request {
-    
+extension EndpointRouter {
+
     // Defaults
     var method: HTTPMethod { return .get }
     var contentType: String { return "application/json" }
     var queryParams: [String: Any]? { return nil }
     var body: [String: Any]? { return nil }
     var headers: [String: String]? { return nil }
-    
+
     /// Serializes an HTTP dictionary to a JSON Data Object
     /// - Parameter params: HTTP Parameters dictionary
     /// - Returns: Encoded JSON
@@ -39,14 +39,14 @@ extension Request {
         }
         return httpBody
     }
-    
+
     func addQueryItems(queryParams: [String: Any]?) -> [URLQueryItem]? {
         guard let queryParams = queryParams else {
             return nil
         }
         return queryParams.map({URLQueryItem(name: $0.key, value: "\($0.value)")})
     }
-    
+
     /// Transforms an Request into a standard URL request
     /// - Parameter baseURL: API Base URL to be used
     /// - Returns: A ready to use URLRequest
@@ -59,45 +59,45 @@ extension Request {
         request.httpMethod = method.rawValue
         request.httpBody = requestBodyFrom(params: body)
         request.allHTTPHeaderFields = headers
-        
-        ///Set your Common Headers here
-        ///Like: api secret key for authorization header
-        ///Or set your content type
-        //request.setValue("Your API Token key", forHTTPHeaderField: HTTPHeaderField.authorization.rawValue)
+
+        /// Set your Common Headers here
+        /// Like: api secret key for authorization header
+        /// Or set your content type
+        // request.setValue("Your API Token key", forHTTPHeaderField: HTTPHeaderField.authorization.rawValue)
         request.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.acceptType.rawValue)
-      
+
         return request
     }
 }
 
-struct NetworkDispatcher {
-    
+struct APIClient {
+
     let urlSession: URLSession!
-    
+
     public init(urlSession: URLSession = .shared) {
         self.urlSession = urlSession
     }
-    
+
     /// Dispatches an URLRequest and returns a publisher
     /// - Parameter request: URLRequest
     /// - Returns: A publisher with the provided decoded data or an error
     func dispatch<ReturnType: Codable>(request: URLRequest) -> AnyPublisher<ReturnType, NetworkRequestError> {
-        //Log Request
+        // Log Request
         print("[\(request.httpMethod?.uppercased() ?? "")] '\(request.url!)'")
         return urlSession
             .dataTaskPublisher(for: request)
             .subscribe(on: DispatchQueue.global(qos: .default))
             // Map on Request response
             .tryMap({ data, response in
-                
+
                 // If the response is invalid, throw an error
                 guard let response = response as? HTTPURLResponse else {
                     throw httpError(0)
                 }
-                
-                //Log Request result
+
+                // Log Request result
                 print("[\(response.statusCode)] '\(request.url!)'")
-                
+
                 if !(200...299).contains(response.statusCode) {
                     throw httpError(response.statusCode)
                 }
@@ -114,7 +114,7 @@ struct NetworkDispatcher {
             // And finally, expose our publisher
             .eraseToAnyPublisher()
     }
-    
+
     /// Parses a HTTP StatusCode and returns a proper error
     /// - Parameter statusCode: HTTP status code
     /// - Returns: Mapped Error
@@ -130,7 +130,7 @@ struct NetworkDispatcher {
         default: return .unknownError
         }
     }
-    
+
     /// Parses URLSession Publisher errors and return proper ones
     /// - Parameter error: URLSession publisher error
     /// - Returns: Readable NetworkRequestError
@@ -145,23 +145,5 @@ struct NetworkDispatcher {
         default:
             return .unknownError
         }
-    }
-}
-
-struct APIClient {
-    
-    static var networkDispatcher: NetworkDispatcher = NetworkDispatcher()
-    
-    /// Dispatches a Request and returns a publisher
-    /// - Parameter request: Request to Dispatch
-    /// - Returns: A publisher containing decoded data or an error
-    static func dispatch<R: Request>(_ request: R) -> AnyPublisher<R.ReturnType, NetworkRequestError> {
-        guard let urlRequest = request.asURLRequest(baseURL: APIConstants.basedURL) else {
-            return Fail(outputType: R.ReturnType.self, failure: NetworkRequestError.badRequest).eraseToAnyPublisher()
-            
-        }
-        typealias RequestPublisher = AnyPublisher<R.ReturnType, NetworkRequestError>
-        let requestPublisher: RequestPublisher = networkDispatcher.dispatch(request: urlRequest)
-        return requestPublisher.eraseToAnyPublisher()
     }
 }

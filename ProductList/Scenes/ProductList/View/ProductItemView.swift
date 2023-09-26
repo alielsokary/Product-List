@@ -25,7 +25,7 @@ struct ProductItemView: View {
                     .font(.title3)
                 Text(product.description)
                     .font(.caption2)
-                
+
                 HStack(alignment: .center, spacing: 30) {
                     Text(product.price)
                         .foregroundColor(.gray)

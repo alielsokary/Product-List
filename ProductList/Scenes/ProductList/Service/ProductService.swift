@@ -6,16 +6,23 @@
 //
 
 import Foundation
+import Combine
 
 protocol ProductService {
-    func getProducts(completion: @escaping (Result<Products, NetworkError>) -> Void)
+    func dispatch<R: EndpointRouter>(_ request: R) -> AnyPublisher<R.ReturnType, NetworkRequestError>
 }
 
-class ProductServiceImpl: ProductService {
-    private let service = NetworkService()
+struct ProductServiceImpl: ProductService {
 
-    func getProducts(completion: @escaping (Result<Products, NetworkError>) -> Void) {
-        return service.fetchRequest(forRoute: .getProducts, completion: completion)
+    private let apiClient: APIClient = APIClient()
+
+    @discardableResult
+    public func dispatch<R: EndpointRouter>(_ request: R) -> AnyPublisher<R.ReturnType, NetworkRequestError> {
+        guard let urlRequest = request.asURLRequest(baseURL: APIConstants.basedURL) else {
+            return Fail(outputType: R.ReturnType.self, failure: NetworkRequestError.badRequest).eraseToAnyPublisher()
+        }
+        typealias RequestPublisher = AnyPublisher<R.ReturnType, NetworkRequestError>
+        let requestPublisher: RequestPublisher = apiClient.dispatch(request: urlRequest)
+        return requestPublisher.eraseToAnyPublisher()
     }
-
 }

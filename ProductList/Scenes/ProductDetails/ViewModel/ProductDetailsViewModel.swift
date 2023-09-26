@@ -1,50 +1,27 @@
 //
-//  DetailsViewModel.swift
+//  ProductDetailsViewModel.swift
 //  ProductList
 //
-//  Created by Farghaly on 24/05/2023.
+//  Created by Ali Elsokary on 18/08/2023.
 //
 
 import Foundation
 
-protocol ProductDetailsViewModelLogic {
-    // MARK: Properties
-    var productID: String? { get }
-    var productName: String? { get }
-    var productDescription: String? { get }
-    var productLongDescription: String? { get }
-    var productPrice: String? { get }
-    var productDate: String? { get }
-    var productRate: Double? { get }
-    var imageUrl: URL? { get }
+class ProductDetailsViewModel: ObservableObject {
 
-    func getFavoriteButtonTitle() -> String
-    func isFavorited() -> Bool
-    func save(productId: String)
-}
-
-class ProductDetailsViewModel: ProductDetailsViewModelLogic {
-    // MARK: - Proberities
-
-    var productID: String?
-    var productDate: String?
-
-    var productName: String?
-
-    var productDescription: String?
-
-    var productLongDescription: String?
-
-    var productPrice: String?
-
-    var productRate: Double?
-
-    var imageUrl: URL?
+    @Published private(set) var productID: String?
+    @Published private(set) var productName: String?
+    @Published private(set) var productDescription: String?
+    @Published private(set) var productLongDescription: String?
+    @Published private(set) var productPrice: String?
+    @Published private(set) var productDate: String?
+    @Published private(set) var imageUrl: URL?
+    @Published private(set) var favoriteButtonTitle: String?
+    @Published var productRate: Double  = 0.0
 
     var productInfo: ProductViewModel? {
         didSet {
             processProductData(data: productInfo)
-
         }
     }
 
@@ -61,6 +38,10 @@ class ProductDetailsViewModel: ProductDetailsViewModelLogic {
 
     func getFavoriteButtonTitle() -> String {
         isFavorited() ? "UnFavorite" : "Favorite"
+    }
+
+    func updateFavoriteButtonTitle() {
+        favoriteButtonTitle = isFavorited() ? "UnFavorite" : "Favorite"
     }
 
     func save(productId: String) {
@@ -90,5 +71,4 @@ class ProductDetailsViewModel: ProductDetailsViewModelLogic {
             imageUrl = url
         }
     }
-
 }
