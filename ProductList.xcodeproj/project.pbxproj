@@ -34,6 +34,7 @@
 		06D582D02A1E120900935D52 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 06D582CF2A1E120900935D52 /* Cosmos */; };
 		06D582D22A1E141200935D52 /* UIView+Borders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D582D12A1E141200935D52 /* UIView+Borders.swift */; };
 		06D582D42A1E143E00935D52 /* UIView+Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D582D32A1E143E00935D52 /* UIView+Identifier.swift */; };
+		4114D0542B01514D00A12C9C /* EndpointRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4114D0532B01514D00A12C9C /* EndpointRouter.swift */; };
 		41D8998E2A8EDEB300291E5F /* ProductDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D8998D2A8EDEB300291E5F /* ProductDetailsView.swift */; };
 		41D899902A8EF42E00291E5F /* CosmosRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D8998F2A8EF42E00291E5F /* CosmosRateView.swift */; };
 		41D899922A8F90FB00291E5F /* ProductDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D899912A8F90FB00291E5F /* ProductDetailsViewModel.swift */; };
@@ -89,6 +90,7 @@
 		06D582CB2A1E0F3200935D52 /* ProductTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductTableViewCell.xib; sourceTree = "<group>"; };
 		06D582D12A1E141200935D52 /* UIView+Borders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Borders.swift"; sourceTree = "<group>"; };
 		06D582D32A1E143E00935D52 /* UIView+Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Identifier.swift"; sourceTree = "<group>"; };
+		4114D0532B01514D00A12C9C /* EndpointRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointRouter.swift; sourceTree = "<group>"; };
 		41D8998D2A8EDEB300291E5F /* ProductDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsView.swift; sourceTree = "<group>"; };
 		41D8998F2A8EF42E00291E5F /* CosmosRateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosRateView.swift; sourceTree = "<group>"; };
 		41D899912A8F90FB00291E5F /* ProductDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 		41D8999B2A91440400291E5F /* Combine Network */ = {
 			isa = PBXGroup;
 			children = (
+				4114D0532B01514D00A12C9C /* EndpointRouter.swift */,
 				41D8999C2A91442700291E5F /* APIClient.swift */,
 				41D8999E2A91442700291E5F /* APIRouter.swift */,
 				41D8999D2A91442700291E5F /* APIConstants.swift */,
@@ -469,6 +472,7 @@
 				41D899962A8FD80A00291E5F /* ProductListViewModel.swift in Sources */,
 				41D899A02A91442700291E5F /* APIClient.swift in Sources */,
 				06D582A62A1DFFCF00935D52 /* Config.swift in Sources */,
+				4114D0542B01514D00A12C9C /* EndpointRouter.swift in Sources */,
 				06D582702A1DFC5100935D52 /* AppDelegate.swift in Sources */,
 				06D582AA2A1E015C00935D52 /* NetworkError.swift in Sources */,
 				41D8999A2A8FF11800291E5F /* ProductItemView.swift in Sources */,
